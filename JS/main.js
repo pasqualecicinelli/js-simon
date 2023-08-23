@@ -6,7 +6,7 @@ const seconds = document.getElementById('seconds');
 /** 
 * Mostra il Giorno, Ora, Minuti, Secondi, Millisecondi 
 * e i Millisecondi che ci sono in quel momento 
-*/ 
+*/
 function showDay(now) {
 
     console.log('giorno: ' + now.getDay());
@@ -17,6 +17,7 @@ function showDay(now) {
     console.log('millisecondi completo: ' + now.getTime());
 
 }
+
 let now = new Date();
 let ora = showDay(now);
 
@@ -28,20 +29,25 @@ let domani = showDay(tomorrow)
 let resultMillS = subtraction(tomorrow.getTime(), now.getTime());
 console.log(resultMillS);
 
-let secondi = parseInt(resultMillS % 100);
-let minuti = parseInt(secondi / 60);
-let ore = parseInt(minuti / 60);
-let giorno = parseInt(ore / 24);
+setInterval(countdown, 1000);
 
-days.innerText = giorno;
-
-console.log(giorno + '\n' + ore + '\n' + minuti + '\n' + secondi);
 
 let time = resultMillS;
 
 function countdown() {
-    
+    let ore = parseInt(resultMillS / (1000 * 60 * 60));
+    let minuti = parseInt(resultMillS % (1000 * 60 * 60) / (1000 * 60));
+    let secondi = parseInt(resultMillS % (1000 * 60 * 60) % (1000 * 60) / 1000);
+    let giorno = parseInt(ore / 24);
+
+    days.innerText = giorno;
+    hours.innerText = ore;
+    minutes.innerText = minuti;
+    seconds.innerText = secondi;
 
 
-    
+    resultMillS = resultMillS - 1000;
+    //console.log(giorno + '\n' + ore + '\n' + minuti + '\n' + secondi);
 }
+
+

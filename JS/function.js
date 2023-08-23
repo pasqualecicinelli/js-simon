@@ -17,7 +17,7 @@ function getSum(firstElement, secondElement) {
 // Sottrae il primo elemento con il secondo
 function subtraction(firstElement, seconndElement) {
 
-    return sottrazione = parseInt(firstElement - seconndElement);
+    return parseInt(firstElement - seconndElement);
 }
 
 // Questa funzione calcola solo il maggiore di 3 elementi
