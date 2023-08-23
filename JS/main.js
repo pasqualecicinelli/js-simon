@@ -31,6 +31,11 @@ console.log(resultMillS);
 
 setInterval(countdown, 1000);
 
+const myTimeout = setTimeout(countdown, 0);
+
+function myStopFunction() {
+    clearTimeout(myTimeout);
+}
 
 let time = resultMillS;
 
