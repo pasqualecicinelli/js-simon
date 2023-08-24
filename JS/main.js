@@ -3,6 +3,7 @@ const hours = document.getElementById('hours');
 const minutes = document.getElementById('minutes');
 const seconds = document.getElementById('seconds');
 
+
 /** 
 * Mostra il Giorno, Ora, Minuti, Secondi, Millisecondi 
 * e i Millisecondi che ci sono in quel momento 
@@ -21,7 +22,7 @@ function showDay(now) {
 let now = new Date();
 let ora = showDay(now);
 
-let tomorrow = new Date('2023, 8, 24, 9:30');
+let tomorrow = new Date('2023, 8, 25, 9:00');
 console.log(tomorrow);
 
 let domani = showDay(tomorrow)
@@ -29,15 +30,7 @@ let domani = showDay(tomorrow)
 let resultMillS = subtraction(tomorrow.getTime(), now.getTime());
 console.log(resultMillS);
 
-setInterval(countdown, 1000);
-
-const myTimeout = setTimeout(countdown, 0);
-
-function myStopFunction() {
-    clearTimeout(myTimeout);
-}
-
-let time = resultMillS;
+const myTimeout = setInterval(countdown, 1000);
 
 function countdown() {
     let ore = parseInt(resultMillS / (1000 * 60 * 60));
@@ -52,7 +45,9 @@ function countdown() {
 
 
     resultMillS = resultMillS - 1000;
+
+    if (resultMillS <= 0) {
+        clearInterval(myTimeout);
+    }
     //console.log(giorno + '\n' + ore + '\n' + minuti + '\n' + secondi);
 }
-
-
